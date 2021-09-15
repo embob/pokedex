@@ -24,4 +24,8 @@ function mapToColor(type) {
   return colors[type];
 }
 
-export { mapToColor };
+function capitalise(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export { mapToColor, capitalise };
