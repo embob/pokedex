@@ -32,14 +32,3 @@ input, select {
   flex-basis: calc((100%/6) - 32px);
   padding: 16px;
 }
-
-.no-results {
-  display: flex;
-  justify-content: center;
-  padding: 64px 0;
-  width: 50%;
-  align-items: center;
-  div {
-    font-size: 48px;
-  }
-}

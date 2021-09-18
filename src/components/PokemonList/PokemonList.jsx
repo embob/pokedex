@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import { capitalise } from "../../utils/utils";
+import NoResults from "../NoResults/NoResults";
+import Modal from "../Modal/Modal";
+import useModal from "../useModal";
 import './pokemon-list.scss';
 
+// move out
 function getTypes(pokemon) {
   const typesSet = new Set();
   pokemon.map(({ types }) => types.map(type => typesSet.add(type)));
@@ -18,15 +22,6 @@ function useDebouncedValue(value, wait) {
   }, [value, wait]);
 
   return debouncedValue;
-}
-
-function NoResults() {
-  return (
-    <div className="no-results">
-      <img src={`images/54.png`} alt="Pokemon" width={300} height={300} />
-      <div>Oh!! No Pokémon exist for this search</div>
-    </div>
-  )
 }
 
 function PokemonList() {
@@ -70,7 +65,6 @@ function PokemonList() {
     setSearchQuery('');
     setFilterValue('');
   }
-
 
   return (
 
