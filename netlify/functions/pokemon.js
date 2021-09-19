@@ -29,7 +29,7 @@ exports.handler = async (event, context) => {
   const pathParts = (path) ? path.split('/') : [];
 
   const result = await (pathParts.length > 0 ? getPokemon(pathParts[0]) : getPokemonList());
-
+  console.log('++++++++++++++++result',result);
   return {
     'statusCode': 200,
     'headers': {
