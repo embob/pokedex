@@ -25,6 +25,7 @@ function useDebouncedValue(value, wait) {
 }
 
 function PokemonList() {
+  const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [types, setTypes] = useState([]);
@@ -36,6 +37,7 @@ function PokemonList() {
     fetch("http://localhost:8765/api/pokemon")
       .then(response => {
         if (response.ok) {
+          setIsLoading(false);
           return response.json();
         }
         throw new Error('Request failed');
@@ -69,7 +71,6 @@ function PokemonList() {
   return (
 
     <div className="pokedex">
-
       <header className="pokedex__header">
           <h1 className="pokedex__title">Pokédex</h1>
         <div className="pokedex__search">
