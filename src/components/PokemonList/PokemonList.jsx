@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import { capitalise } from "../../utils/utils";
 import NoResults from "../NoResults/NoResults";
-import Modal from "../Modal/Modal";
-import useModal from "../useModal";
+// import Modal from "../Modal/Modal";
+// import useModal from "../useModal";
 import './pokemon-list.scss';
 
 // move out
@@ -25,7 +25,7 @@ function useDebouncedValue(value, wait) {
 }
 
 function PokemonList() {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [types, setTypes] = useState([]);
@@ -34,10 +34,10 @@ function PokemonList() {
   const debouncedQuery = useDebouncedValue(searchQuery, 400);
 
   useEffect(() => {
-    fetch("http://localhost:8765/api/pokemon")
+    fetch("/.netlify/functions/pokemon")
       .then(response => {
         if (response.ok) {
-          setIsLoading(false);
+          // setIsLoading(false);
           return response.json();
         }
         throw new Error('Request failed');
