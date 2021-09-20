@@ -1,0 +1,95 @@
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading__inner-wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 15px;
+}
+
+.loading__text {
+  font-size: 96px;
+  font-weight: bold;
+  margin-right: 24px;
+}
+
+.loading__animation {
+  display: flex;
+}
+
+.ball-1 {
+  animation: anim 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  // animation-delay: 0s;
+}
+
+.ball-2 {
+  animation: anim1 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  // animation-delay: 1.5s;
+}
+
+.ball-3 {
+  animation: anim2 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  // animation-delay: 3.5s;
+}
+
+@keyframes anim {
+  0% {
+    bottom: 0;
+  }
+
+  17% {
+    bottom: 50px;
+  }
+
+  33% {
+    bottom: 0;
+  }
+}
+
+@keyframes anim1 {
+  0% {
+    bottom: 0;
+  }
+
+  33% {
+    bottom: 0;
+  }
+
+  50% {
+    bottom: 50px;
+  }
+
+  66% {
+    bottom: 0;
+  }
+}
+
+@keyframes anim2 {
+  0% {
+    bottom: 0;
+  }
+
+  66% {
+    bottom: 0;
+  }
+  83% {
+    bottom: 50px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
