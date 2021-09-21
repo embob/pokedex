@@ -19,7 +19,6 @@ const colors = {
   water: '#99C0E7',
 }
 
-
 function mapToColor(type) {
   return colors[type];
 }
@@ -34,4 +33,15 @@ function getTypes(pokemon) {
   return Array.from(typesSet);
 }
 
-export { mapToColor, capitalise, getTypes };
+function setBackground(types) {
+  let count = 0;
+  return types.map((type) => mapToColor(type)).reduce((prev, curr) => {
+    count += 1;
+    return {
+      ...prev,
+      [`--color-${count}`]: `${curr}`
+    }
+  }, {});
+}
+
+export { capitalise, getTypes, setBackground };
