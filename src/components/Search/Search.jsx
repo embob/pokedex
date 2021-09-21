@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { PokemonListContext } from "../Pokedex/Pokedex";
 import searchIcon from "./search.svg";
 import { capitalise } from "../../utils/utils";
+import "./search.scss";
 
 export default function Search() {
   const { searchQuery, setSearchQuery, filterValue, setFilterValue, types } =
@@ -13,8 +14,9 @@ export default function Search() {
     setFilterValue("");
   }
   return (
-    <div className="pokedex__search">
+    <div className="search">
       <input
+        className="search__text"
         type="text"
         name="name"
         id="name"
@@ -27,6 +29,7 @@ export default function Search() {
       />
 
       <select
+        className="search__select"
         onChange={(event) => {
           setFilterValue(event.target.value);
         }}
@@ -35,12 +38,14 @@ export default function Search() {
       >
         <option value="">Filter By Type</option>
         {types.map((type) => (
-          <option key={type} value={type}>{capitalise(type)}</option>
+          <option key={type} value={type}>
+            {capitalise(type)}
+          </option>
         ))}
       </select>
 
       {(searchQuery || filterValue) && (
-        <div className="pokedex__clear-search" onClick={handleClick}>
+        <div className="search__clear" onClick={handleClick}>
           Clear search
         </div>
       )}
