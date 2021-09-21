@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { PokemonListContext } from "../Pokedex/Pokedex";
+import { PokedexContext } from "../Pokedex/Pokedex";
 import searchIcon from "./search.svg";
 import { capitalise } from "../../utils/utils";
 import "./search.scss";
 
 export default function Search() {
   const { searchQuery, setSearchQuery, filterValue, setFilterValue, types } =
-    useContext(PokemonListContext);
+    useContext(PokedexContext);
 
   function handleClick(event) {
     event.preventDefault();

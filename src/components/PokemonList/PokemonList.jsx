@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { PokemonListContext } from "../Pokedex/Pokedex";
+import { PokedexContext } from "../Pokedex/Pokedex";
 import PreviewCard from "../PreviewCard/PreviewCard";
 import NoResults from "../NoResults/NoResults";
 import "./pokemon-list.scss";
 
 export default function PokemonList() {
-  const { filteredList } = useContext(PokemonListContext);
+  const { filteredList } = useContext(PokedexContext);
 
   return (
     <div>

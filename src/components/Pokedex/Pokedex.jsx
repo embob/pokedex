@@ -8,7 +8,7 @@ import useModal from "../useModal";
 import "./pokedex.scss";
 import Search from "../Search/Search";
 
-const PokemonListContext = React.createContext();
+const PokedexContext = React.createContext();
 
 function Pokedex() {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +60,7 @@ function Pokedex() {
   if (error) return <Error />;
 
   return (
-    <PokemonListContext.Provider
+    <PokedexContext.Provider
       value={{
         searchQuery,
         setSearchQuery,
@@ -82,8 +82,8 @@ function Pokedex() {
       </div>
 
       <Modal isShowing={isShowing} hide={toggle} />
-    </PokemonListContext.Provider>
+    </PokedexContext.Provider>
   );
 }
 
-export { Pokedex, PokemonListContext };
+export { Pokedex, PokedexContext };
