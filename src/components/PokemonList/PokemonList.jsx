@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PreviewCard from "../PreviewCard/PreviewCard";
-import { capitalise } from "../../utils/utils";
+import { getTypes } from "../../utils/utils";
 import NoResults from "../NoResults/NoResults";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
@@ -9,15 +9,7 @@ import Error from "../Error/Error";
 import "./pokemon-list.scss";
 import Search from "../Search/Search";
 
-
 const PokemonListContext = React.createContext();
-
-// move out
-function getTypes(pokemon) {
-  const typesSet = new Set();
-  pokemon.map(({ types }) => types.map((type) => typesSet.add(type)));
-  return Array.from(typesSet);
-}
 
 function useDebouncedValue(value, wait) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -79,27 +71,35 @@ function PokemonList() {
   if (error) return <Error />;
 
   return (
-    <PokemonListContext.Provider value={{searchQuery, setSearchQuery, filterValue, setFilterValue, filteredList, setFilteredList, types, setTypes}}>
-    <div className="pokedex">
-      <header className="pokedex__header">
-        <h1 className="pokedex__title">Pokédex</h1>
-        <Search />
-      </header>
+    <PokemonListContext.Provider
+      value={{
+        searchQuery,
+        setSearchQuery,
+        filterValue,
+        setFilterValue,
+        types,
+      }}
+    >
+      <div className="pokedex">
+        <header className="pokedex__header">
+          <h1 className="pokedex__title">Pokédex</h1>
+          <Search />
+        </header>
 
-      <div className="pokemon-list">
-        {filteredList.length > 0 ? (
-          filteredList.map(({ id, name, types }, index) => (
-            <div className="pokemon-list__item" key={index}>
-              <PreviewCard id={id} name={name} types={types} key={index} />
-            </div>
-          ))
-        ) : (
-          <NoResults />
-        )}
+        <div className="pokemon-list">
+          {filteredList.length > 0 ? (
+            filteredList.map(({ id, name, types }, index) => (
+              <div className="pokemon-list__item" key={index}>
+                <PreviewCard id={id} name={name} types={types} key={index} />
+              </div>
+            ))
+          ) : (
+            <NoResults />
+          )}
+        </div>
       </div>
-    </div>
     </PokemonListContext.Provider>
   );
 }
 
-export { PokemonList, PokemonListContext};
+export { PokemonList, PokemonListContext };

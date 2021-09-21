@@ -1,10 +1,11 @@
 import React from 'react';
-import './preview-card.scss';
 import { mapToColor, capitalise } from '../../utils/utils';
 import Modal from '../Modal/Modal';
 import useModal from '../useModal';
+import './preview-card.scss';
 
 export default function PreviewCard({ id, name, types }) {
+
   let count = 0;
   const colors = types.map((type) => mapToColor(type)).reduce((prev, curr) => {
     count += 1;

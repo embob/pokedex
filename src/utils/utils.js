@@ -28,4 +28,10 @@ function capitalise(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-export { mapToColor, capitalise };
+function getTypes(pokemon) {
+  const typesSet = new Set();
+  pokemon.map(({ types }) => types.map((type) => typesSet.add(type)));
+  return Array.from(typesSet);
+}
+
+export { mapToColor, capitalise, getTypes };
