@@ -3,8 +3,8 @@ import { getTypes } from "../../utils/utils";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import PokemonList from "../PokemonList/PokemonList";
-// import Modal from "../Modal/Modal";
-// import useModal from "../useModal";
+import Modal from "../Modal/Modal";
+import useModal from "../useModal";
 import "./pokedex.scss";
 import Search from "../Search/Search";
 
@@ -54,6 +54,8 @@ function Pokedex() {
     setFilteredList(namesFiltered);
   }, [pokemon, filterValue, searchQuery]);
 
+  const { isShowing, toggle } = useModal();
+
   if (isLoading) return <Loading />;
   if (error) return <Error />;
 
@@ -66,6 +68,7 @@ function Pokedex() {
         setFilterValue,
         types,
         filteredList,
+        toggle
       }}
     >
       <div className="pokedex">
@@ -75,7 +78,10 @@ function Pokedex() {
         </header>
 
         <PokemonList />
+
       </div>
+
+      <Modal isShowing={isShowing} hide={toggle} />
     </PokemonListContext.Provider>
   );
 }
