@@ -4,10 +4,13 @@ import { capitalise } from "../../utils/utils";
 import NoResults from "../NoResults/NoResults";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
-import searchIcon from "./search.svg";
 // import Modal from "../Modal/Modal";
 // import useModal from "../useModal";
 import "./pokemon-list.scss";
+import Search from "../Search/Search";
+
+
+const PokemonListContext = React.createContext();
 
 // move out
 function getTypes(pokemon) {
@@ -72,49 +75,15 @@ function PokemonList() {
     setFilteredList(namesFiltered);
   }, [pokemon, filterValue, searchQuery, debouncedQuery]);
 
-  function handleClick(event) {
-    event.preventDefault();
-    setSearchQuery("");
-    setFilterValue("");
-  }
-
   if (isLoading) return <Loading />;
   if (error) return <Error />;
 
   return (
+    <PokemonListContext.Provider value={{searchQuery, setSearchQuery, filterValue, setFilterValue, filteredList, setFilteredList, types, setTypes}}>
     <div className="pokedex">
       <header className="pokedex__header">
         <h1 className="pokedex__title">Pokédex</h1>
-        <div className="pokedex__search">
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Search by name..."
-            value={searchQuery}
-            onChange={(event) => {
-              setSearchQuery(event.target.value);
-            }}
-            style={{ backgroundImage: `url(${searchIcon})` }}
-          />
-
-          <select
-            onChange={(event) => {
-              setFilterValue(event.target.value);
-            }}
-            aria-label="Filter Pokemon by Type"
-            value={filterValue}
-          >
-            <option value="">Filter By Type</option>
-            {types.map((type) => (
-              <option value={type}>{capitalise(type)}</option>
-            ))}
-          </select>
-
-          {(searchQuery || filterValue) && (
-            <div className="pokedex__clear-search" onClick={handleClick}>Clear search</div>
-          )}
-        </div>
+        <Search />
       </header>
 
       <div className="pokemon-list">
@@ -129,7 +98,8 @@ function PokemonList() {
         )}
       </div>
     </div>
+    </PokemonListContext.Provider>
   );
 }
 
-export default PokemonList;
+export { PokemonList, PokemonListContext};
