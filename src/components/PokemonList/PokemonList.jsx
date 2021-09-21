@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from "react";
-import PreviewCard from "../PreviewCard/PreviewCard";
 import { getTypes } from "../../utils/utils";
-import NoResults from "../NoResults/NoResults";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
+import FilteredList from "../FilteredList/FilteredList";
 // import Modal from "../Modal/Modal";
 // import useModal from "../useModal";
 import "./pokemon-list.scss";
 import Search from "../Search/Search";
 
 const PokemonListContext = React.createContext();
-
-function useDebouncedValue(value, wait) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const id = setTimeout(() => setDebouncedValue(value), wait);
-    return () => clearTimeout(id);
-  }, [value, wait]);
-
-  return debouncedValue;
-}
 
 function PokemonList() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +18,6 @@ function PokemonList() {
   const [types, setTypes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterValue, setFilterValue] = useState("");
-  const debouncedQuery = useDebouncedValue(searchQuery, 400);
 
   useEffect(() => {
     fetch("/.netlify/functions/pokemon")
@@ -62,10 +49,10 @@ function PokemonList() {
     const namesFiltered = !searchQuery
       ? typesFiltered
       : typesFiltered.filter(({ name }) => {
-          return name.includes(debouncedQuery.toLowerCase());
+          return name.includes(searchQuery.toLowerCase());
         });
     setFilteredList(namesFiltered);
-  }, [pokemon, filterValue, searchQuery, debouncedQuery]);
+  }, [pokemon, filterValue, searchQuery]);
 
   if (isLoading) return <Loading />;
   if (error) return <Error />;
@@ -78,25 +65,18 @@ function PokemonList() {
         filterValue,
         setFilterValue,
         types,
+        filteredList,
       }}
     >
       <div className="pokedex">
+
         <header className="pokedex__header">
           <h1 className="pokedex__title">Pokédex</h1>
           <Search />
         </header>
 
-        <div className="pokemon-list">
-          {filteredList.length > 0 ? (
-            filteredList.map(({ id, name, types }, index) => (
-              <div className="pokemon-list__item" key={index}>
-                <PreviewCard id={id} name={name} types={types} key={index} />
-              </div>
-            ))
-          ) : (
-            <NoResults />
-          )}
-        </div>
+        <FilteredList />
+
       </div>
     </PokemonListContext.Provider>
   );

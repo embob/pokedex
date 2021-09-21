@@ -1,0 +1,10 @@
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -16px;
+}
+
+.pokemon-list__item {
+  flex-basis: calc((100% / 6) - 32px);
+  padding: 16px;
+}
