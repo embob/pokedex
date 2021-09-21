@@ -5,7 +5,7 @@ import NoResults from "../NoResults/NoResults";
 import "./pokemon-list.scss";
 
 export default function PokemonList() {
-  const { filteredList, toggle } = useContext(PokemonListContext);
+  const { filteredList } = useContext(PokemonListContext);
 
   return (
     <div>
