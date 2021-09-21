@@ -1,85 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { getTypes } from "../../utils/utils";
-import Loading from "../Loading/Loading";
-import Error from "../Error/Error";
-import FilteredList from "../FilteredList/FilteredList";
-// import Modal from "../Modal/Modal";
-// import useModal from "../useModal";
+import React, { useContext } from "react";
+import { PokemonListContext } from "../Pokedex/Pokedex";
+import PreviewCard from "../PreviewCard/PreviewCard";
+import NoResults from "../NoResults/NoResults";
 import "./pokemon-list.scss";
-import Search from "../Search/Search";
 
-const PokemonListContext = React.createContext();
-
-function PokemonList() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(false);
-  const [pokemon, setPokemon] = useState([]);
-  const [filteredList, setFilteredList] = useState([]);
-  const [types, setTypes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filterValue, setFilterValue] = useState("");
-
-  useEffect(() => {
-    fetch("/.netlify/functions/pokemon")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(`Request failed`);
-      })
-      .then((json) => {
-        setIsLoading(false);
-        setPokemon(json);
-        setFilteredList(json);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setError(true);
-      });
-  }, [setPokemon, setFilteredList]);
-
-  useEffect(() => {
-    setTypes(getTypes(pokemon));
-  }, [pokemon]);
-
-  useEffect(() => {
-    const typesFiltered = !filterValue
-      ? pokemon
-      : pokemon.filter(({ types }) => types.includes(filterValue));
-    const namesFiltered = !searchQuery
-      ? typesFiltered
-      : typesFiltered.filter(({ name }) => {
-          return name.includes(searchQuery.toLowerCase());
-        });
-    setFilteredList(namesFiltered);
-  }, [pokemon, filterValue, searchQuery]);
-
-  if (isLoading) return <Loading />;
-  if (error) return <Error />;
+export default function PokemonList() {
+  const { filteredList } = useContext(PokemonListContext);
 
   return (
-    <PokemonListContext.Provider
-      value={{
-        searchQuery,
-        setSearchQuery,
-        filterValue,
-        setFilterValue,
-        types,
-        filteredList,
-      }}
-    >
-      <div className="pokedex">
-
-        <header className="pokedex__header">
-          <h1 className="pokedex__title">Pokédex</h1>
-          <Search />
-        </header>
-
-        <FilteredList />
-
+    <div>
+      <div className="pokemon-list">
+        {filteredList.length > 0 ? (
+          filteredList.map(({ id, name, types }, index) => (
+            <div className="pokemon-list__item" key={index}>
+              <PreviewCard id={id} name={name} types={types} key={index} />
+            </div>
+          ))
+        ) : (
+          <NoResults />
+        )}
       </div>
-    </PokemonListContext.Provider>
+    </div>
   );
 }
-
-export { PokemonList, PokemonListContext };

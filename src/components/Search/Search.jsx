@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PokemonListContext } from "../PokemonList/PokemonList";
+import { PokemonListContext } from "../Pokedex/Pokedex";
 import searchIcon from "./search.svg";
 import { capitalise } from "../../utils/utils";
 
