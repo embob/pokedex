@@ -1,15 +1,14 @@
-.no-results {
+.error {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-basis: 100%;
-  margin-top: 80px;
+  height: 100vh;
 }
 
-.no-results__inner-wrapper {
+.error__inner-wrapper {
   display: flex;
   align-items: center;
   font-size: 48px;
+  font-weight: bold;
   flex-basis: 600px;
-  font-weight: bold;;
 }
