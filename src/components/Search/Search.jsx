@@ -35,7 +35,7 @@ export default function Search() {
       >
         <option value="">Filter By Type</option>
         {types.map((type) => (
-          <option value={type}>{capitalise(type)}</option>
+          <option key={type} value={type}>{capitalise(type)}</option>
         ))}
       </select>
 
