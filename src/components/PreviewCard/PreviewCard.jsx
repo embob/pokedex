@@ -20,16 +20,7 @@ export default function PreviewCard({ id, name, types }) {
     />
   ));
 
-  const { toggle, setId, pokemonDetail } = useContext(PokedexContext);
-
-  function fetchPokemonDetails(id) {
-    if (pokemonDetail[id]) {
-      return;
-    }
-
-  }
-
-
+  const { toggle, setId } = useContext(PokedexContext);
 
   function handleClick(event) {
     toggle();

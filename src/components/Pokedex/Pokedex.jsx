@@ -14,6 +14,7 @@ function Pokedex() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [pokemon, setPokemon] = useState([]);
+  const [pokemonDetail, setPokemonDetail] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [types, setTypes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,7 +37,7 @@ function Pokedex() {
         setIsLoading(false);
         setError(true);
       });
-  }, [setPokemon]);
+  }, []);
 
   useEffect(() => {
     setTypes(getTypes(pokemon));
@@ -75,7 +76,9 @@ function Pokedex() {
         setId,
         pokemon,
         noSearchResults,
-        setNoSearchResults
+        setNoSearchResults,
+        pokemonDetail,
+        setPokemonDetail,
       }}
     >
       <div className="pokedex">
@@ -85,7 +88,6 @@ function Pokedex() {
         </header>
 
         <PokemonList />
-
       </div>
 
       <Modal isShowing={isShowing} hide={toggle} id={cardClicked} />

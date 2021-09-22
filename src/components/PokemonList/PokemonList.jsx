@@ -8,8 +8,9 @@ export default function PokemonList() {
   const { pokemon, filteredList, noSearchResults } = useContext(PokedexContext);
 
   if (noSearchResults) return <NoResults />
-  let list = [];
-  filteredList.length > 0 ? list = [...filteredList] : list = [...pokemon];
+
+  const list = filteredList.length > 0 ? [...filteredList] : [...pokemon];
+
   return (
     <div>
       <div className="pokemon-list">
