@@ -5,13 +5,15 @@ import { capitalise } from "../../utils/utils";
 import "./search.scss";
 
 export default function Search() {
-  const { searchQuery, setSearchQuery, filterValue, setFilterValue, types } =
+  const { searchQuery, setSearchQuery, filterValue, setFilterValue, types, setFilteredList, setNoSearchResults } =
     useContext(PokedexContext);
 
   function handleClick(event) {
     event.preventDefault();
     setSearchQuery("");
     setFilterValue("");
+    setFilteredList([]);
+    setNoSearchResults(false);
   }
   return (
     <div className="search">

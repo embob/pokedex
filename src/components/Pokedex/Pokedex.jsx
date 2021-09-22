@@ -18,6 +18,7 @@ function Pokedex() {
   const [types, setTypes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterValue, setFilterValue] = useState("");
+  const [noSearchResults, setNoSearchResults] = useState(false);
 
   useEffect(() => {
     fetch("/.netlify/functions/pokemon")
@@ -30,19 +31,19 @@ function Pokedex() {
       .then((json) => {
         setIsLoading(false);
         setPokemon(json);
-        setFilteredList(json);
       })
       .catch((error) => {
         setIsLoading(false);
         setError(true);
       });
-  }, [setPokemon, setFilteredList]);
+  }, [setPokemon]);
 
   useEffect(() => {
     setTypes(getTypes(pokemon));
   }, [pokemon]);
 
   useEffect(() => {
+    if (!filterValue && !searchQuery) return;
     const typesFiltered = !filterValue
       ? pokemon
       : pokemon.filter(({ types }) => types.includes(filterValue));
@@ -51,10 +52,11 @@ function Pokedex() {
       : typesFiltered.filter(({ name }) => {
           return name.includes(searchQuery.toLowerCase());
         });
+    if (namesFiltered.length === 0) setNoSearchResults(true);
     setFilteredList(namesFiltered);
   }, [pokemon, filterValue, searchQuery]);
 
-  const { isShowing, toggle } = useModal();
+  const { isShowing, toggle, setId, cardClicked } = useModal();
 
   if (isLoading) return <Loading />;
   if (error) return <Error />;
@@ -68,7 +70,12 @@ function Pokedex() {
         setFilterValue,
         types,
         filteredList,
-        toggle
+        setFilteredList,
+        toggle,
+        setId,
+        pokemon,
+        noSearchResults,
+        setNoSearchResults
       }}
     >
       <div className="pokedex">
@@ -81,7 +88,7 @@ function Pokedex() {
 
       </div>
 
-      <Modal isShowing={isShowing} hide={toggle} />
+      <Modal isShowing={isShowing} hide={toggle} id={cardClicked} />
     </PokedexContext.Provider>
   );
 }
