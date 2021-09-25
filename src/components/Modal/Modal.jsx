@@ -1,28 +1,35 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDom from "react-dom";
-import { PokedexContext } from "../Pokedex/Pokedex";
+import useFetch from "../../hooks/useFetch";
+import DetailCard from "../DetailCard/DetailCard";
+
+const ModalContext = React.createContext();
 
 const Modal = ({ isShowing, hide, id }) => {
-  // const { filteredList } = useContext(PokedexContext);
-  return isShowing
-    ? ReactDom.createPortal(
-        <>
-          <div className="modal-overlay" />
-          <div className="modal-wrapper">
-            <div className="modal">
-              <div className="modal-header">
-                <button onClick={hide}>
-                  <span>x</span>
-                </button>
-              </div>
-              <div>{id}</div>
-              <p>Hello I'm a modal</p>
+
+  const url = id && `/.netlify/functions/pokemon/${id}`;
+
+  const { data, status } = useFetch(url);
+
+  return (
+    <ModalContext.Provider value={{ data, status }}>
+      { isShowing ? ReactDom.createPortal(
+      <>
+        <div className="modal-overlay" />
+        <div className="modal-wrapper">
+          <div className="modal">
+            <div className="modal-header">
+              <button onClick={hide}>
+                <span>x</span>
+              </button>
             </div>
+            <DetailCard />
           </div>
-        </>,
-        document.body
-      )
-    : null;
+        </div>
+      </>
+      , document.body ) : null}
+    </ModalContext.Provider>
+  );
 };
 
-export default Modal;
+export { Modal, ModalContext };

@@ -3,7 +3,7 @@ import { getTypes } from "../../utils/utils";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 import PokemonList from "../PokemonList/PokemonList";
-import Modal from "../Modal/Modal";
+import { Modal } from "../Modal/Modal";
 import useModal from "../useModal";
 import "./pokedex.scss";
 import Search from "../Search/Search";
@@ -14,12 +14,12 @@ function Pokedex() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [pokemon, setPokemon] = useState([]);
-  const [pokemonDetail, setPokemonDetail] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [types, setTypes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterValue, setFilterValue] = useState("");
   const [noSearchResults, setNoSearchResults] = useState(false);
+  const [cardClicked, setCardClicked] = useState(null);
 
   useEffect(() => {
     fetch("/.netlify/functions/pokemon")
@@ -33,18 +33,24 @@ function Pokedex() {
         setIsLoading(false);
         setPokemon(json);
       })
-      .catch((error) => {
+      .catch(() => {
         setIsLoading(false);
         setError(true);
       });
   }, []);
 
   useEffect(() => {
-    setTypes(getTypes(pokemon));
+    if (pokemon) {
+      setTypes(getTypes(pokemon));
+    }
   }, [pokemon]);
 
   useEffect(() => {
-    if (!filterValue && !searchQuery) return;
+    if (!filterValue && !searchQuery) {
+      setNoSearchResults(false);
+      setFilteredList([]);
+      return;
+    }
     const typesFiltered = !filterValue
       ? pokemon
       : pokemon.filter(({ types }) => types.includes(filterValue));
@@ -57,7 +63,7 @@ function Pokedex() {
     setFilteredList(namesFiltered);
   }, [pokemon, filterValue, searchQuery]);
 
-  const { isShowing, toggle, setId, cardClicked } = useModal();
+  const { isShowing, toggle } = useModal();
 
   if (isLoading) return <Loading />;
   if (error) return <Error />;
@@ -73,12 +79,11 @@ function Pokedex() {
         filteredList,
         setFilteredList,
         toggle,
-        setId,
         pokemon,
         noSearchResults,
         setNoSearchResults,
-        pokemonDetail,
-        setPokemonDetail,
+        cardClicked,
+        setCardClicked
       }}
     >
       <div className="pokedex">
@@ -90,7 +95,7 @@ function Pokedex() {
         <PokemonList />
       </div>
 
-      <Modal isShowing={isShowing} hide={toggle} id={cardClicked} />
+      <Modal isShowing={isShowing} hide={toggle} id={cardClicked}/>
     </PokedexContext.Provider>
   );
 }

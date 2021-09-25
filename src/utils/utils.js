@@ -44,4 +44,21 @@ function setBackground(types) {
   }, {});
 }
 
-export { capitalise, getTypes, setBackground };
+function getRandomNumbersArray(amountToReturn, maxValue, minValue = 1) {
+  const randomNumbers = [];
+  for (let index = 0; index < amountToReturn; index++) {
+    minValue = Math.ceil(minValue);
+    maxValue = Math.floor(maxValue);
+    const randomNumber = Math.floor(Math.random() * (maxValue - minValue) + minValue);
+    randomNumbers.push(randomNumber);
+  }
+  return randomNumbers;
+}
+
+function mapToMoves(moves) {
+  const indexes = getRandomNumbersArray(2, moves.length);
+
+  const randomMoves = indexes.map((index => return moves[index]));
+}
+
+export { capitalise, getTypes, setBackground, getRandomNumbersArray };

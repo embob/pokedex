@@ -20,11 +20,11 @@ export default function PreviewCard({ id, name, types }) {
     />
   ));
 
-  const { toggle, setId } = useContext(PokedexContext);
+  const { toggle, setCardClicked } = useContext(PokedexContext);
 
   function handleClick(event) {
+    setCardClicked(id);
     toggle();
-    setId(id);
   }
 
   return (
