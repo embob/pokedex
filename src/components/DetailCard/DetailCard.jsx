@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import Error from "../Error/Error";
 import { ModalContext } from "../Modal/Modal";
-import { getRandomNumbersArray } from "../../utils/utils";
-
 import "./detail-card.scss";
 
 export default function DetailCard() {
@@ -16,14 +14,10 @@ export default function DetailCard() {
     description,
     genus,
     height,
-    moves,
     name,
     types,
     weight,
   } = data;
-
-  const a = getRandomNumbersArray(2, moves.length)
-
 
   return (
     <div className="detail-card">
