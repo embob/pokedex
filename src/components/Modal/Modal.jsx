@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import useFetch from "../../hooks/useFetch";
 import DetailCard from "../DetailCard/DetailCard";
+import './modal.scss';
 
 const ModalContext = React.createContext();
 
@@ -18,12 +19,12 @@ const Modal = ({ isShowing, hide, id }) => {
         <div className="modal-overlay" />
         <div className="modal-wrapper">
           <div className="modal">
-            <div className="modal-header">
-              <button onClick={hide}>
-                <span>x</span>
+              <button className="modal__close-button" aria-label="Close modal" type="button" onClick={hide}>
+                <span aria-hidden="true">&times;</span>
               </button>
+            <div className="modal__inner">
+              <DetailCard />
             </div>
-            <DetailCard />
           </div>
         </div>
       </>

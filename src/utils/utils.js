@@ -1,23 +1,23 @@
 const colors = {
-  bug: '#CAE48D',
-  dark : '#C3BFCA',
-  dragon: '#B0CCED',
-  electric: '#FAE9A3',
-  fairy: '#F7D0F4',
-  fighting: '#F1CAD5',
-  fire: '#F5B886',
-  flying: '#C8D6EF',
-  ghost: '#C8D6EF',
-  grass: '#A5D8A0',
-  ground: '#EAB294',
-  ice: '#B9E6E0',
-  normal: '#C8CCD0',
-  poison: '#CFADE0',
-  psychic: '#F9CBCE',
-  rock: '#E2DAC5',
-  steel: '#A6BEC9',
-  water: '#99C0E7',
-}
+  bug: "#CAE48D",
+  dark: "#C3BFCA",
+  dragon: "#B0CCED",
+  electric: "#FAE9A3",
+  fairy: "#F7D0F4",
+  fighting: "#F1CAD5",
+  fire: "#F5B886",
+  flying: "#C8D6EF",
+  ghost: "#C8D6EF",
+  grass: "#A5D8A0",
+  ground: "#EAB294",
+  ice: "#B9E6E0",
+  normal: "#C8CCD0",
+  poison: "#CFADE0",
+  psychic: "#F9CBCE",
+  rock: "#E2DAC5",
+  steel: "#A6BEC9",
+  water: "#99C0E7",
+};
 
 function mapToColor(type) {
   return colors[type];
@@ -35,30 +35,69 @@ function getTypes(pokemon) {
 
 function setBackground(types) {
   let count = 0;
-  return types.map((type) => mapToColor(type)).reduce((prev, curr) => {
-    count += 1;
-    return {
-      ...prev,
-      [`--color-${count}`]: `${curr}`
-    }
-  }, {});
+  return types
+    .map((type) => mapToColor(type))
+    .reduce((prev, curr) => {
+      count += 1;
+      return {
+        ...prev,
+        [`--color-${count}`]: `${curr}`,
+      };
+    }, {});
 }
 
-function getRandomNumbersArray(amountToReturn, maxValue, minValue = 1) {
+function generateRandomNumbers(amountToReturn, maxValue, minValue = 1) {
   const randomNumbers = [];
   for (let index = 0; index < amountToReturn; index++) {
     minValue = Math.ceil(minValue);
     maxValue = Math.floor(maxValue);
-    const randomNumber = Math.floor(Math.random() * (maxValue - minValue) + minValue);
+    const randomNumber = Math.floor(
+      Math.random() * (maxValue - minValue) + minValue
+    );
     randomNumbers.push(randomNumber);
   }
   return randomNumbers;
 }
 
-// function mapToMoves(moves) {
-//   const indexes = getRandomNumbersArray(2, moves.length);
+function setRandomMoves(moves, amount) {
+  if (!moves.length) return;
+  const numbers = generateRandomNumbers(amount, moves.length);
+  const setMoves = numbers.map((index => moves[index]));
+  return setMoves;
+}
 
-//   const randomMoves = indexes.map((index => moves[index]));
-// }
+function setTypeIcons(types, size) {
+  if (!types.length) return;
+  return types.map((type, index) => (
+    <img
+      key={index}
+      className={`preview-card__icon preview-card__icon--${type}`}
+      src={`images/icons/${type}.svg`}
+      alt={type}
+      title={type}
+      width={size}
+      height={size}
+    />
+  ));
+}
+function formatName(name) {
+  if (!name) return;
+  return name
+    .split("-")
+    .map((word) => capitalise(word))
+    .join(" ");
+}
 
-export { capitalise, getTypes, setBackground, getRandomNumbersArray };
+function formatId(id) {
+  return id.toString().padStart(3, "0");
+}
+
+export {
+  capitalise,
+  getTypes,
+  setBackground,
+  setTypeIcons,
+  formatName,
+  formatId,
+  setRandomMoves
+};
