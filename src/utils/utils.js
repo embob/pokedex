@@ -55,10 +55,10 @@ function getRandomNumbersArray(amountToReturn, maxValue, minValue = 1) {
   return randomNumbers;
 }
 
-function mapToMoves(moves) {
-  const indexes = getRandomNumbersArray(2, moves.length);
+// function mapToMoves(moves) {
+//   const indexes = getRandomNumbersArray(2, moves.length);
 
-  const randomMoves = indexes.map((index => return moves[index]));
-}
+//   const randomMoves = indexes.map((index => moves[index]));
+// }
 
 export { capitalise, getTypes, setBackground, getRandomNumbersArray };
