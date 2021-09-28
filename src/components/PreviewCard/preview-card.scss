@@ -30,13 +30,11 @@
 }
 
 .preview-card__name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   text-align: center;
   margin-bottom: 8px;
-  @include media-breakpoint-up(sm) {
-    font-size: 16px;
-  }
+
   @include media-breakpoint-up(md) {
     font-size: 22px;
   }
