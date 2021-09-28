@@ -1,6 +1,12 @@
+@use "./src/styles/responsive" as *;
+
 .detail-card {
-  border: 16px solid #f6d949;
-  // padding: 6px 16px;
+  border: 10px solid #f6d949;
+  border-radius: 14px;
+  @include media-breakpoint-up(sm) {
+    border-radius: 20px;
+    border: 16px solid #f6d949;
+  }
 }
 
 .detail-card--gradient {
@@ -12,30 +18,51 @@
 }
 
 .detail-card__first {
-  padding: 0 20px;
   position: relative;
+  padding: 0 14px;
+  @include media-breakpoint-up(sm) {
+    padding: 0 20px;
+  }
 }
 
 .detail-card__second {
-  padding: 0 12px;
+  padding: 0 8px;
+  @include media-breakpoint-up(sm) {
+    padding: 0 12px;
+  }
 }
 
 .detail-card__image {
   position: relative;
-  border: 6px solid #f6d949;
+  border: 4px solid #f6d949;
   text-align: center;
-  padding: 24px 0 8px;
+  padding: 18px 0 4px;
   background-size: cover;
   margin-bottom: 4px;
+  @include media-breakpoint-up(sm) {
+    border: 6px solid #f6d949;
+    padding: 24px 0 8px;
+  }
+  img {
+    @include media-breakpoint-only(xs) {
+      width: 160px;
+      height: auto;
+    }
+  }
 }
 
 .detail-card__attributes {
-  padding: 2px 6px;
+  padding: 2px 0;
   background: #f6d949;
   text-align: center;
   font-weight: bold;
   font-style: italic;
   margin-bottom: 4px;
+  font-size: 14px;
+  @include media-breakpoint-up(sm) {
+    padding: 2px 6px;
+    font-size: 16px;
+  }
 }
 
 .detail-card__damage-relations {
@@ -55,10 +82,16 @@
 
 .detail-card__description {
   border: 2px solid #f6d949;
-  padding: 4px 8px;
-  margin: 0 8px 8px;
+  padding: 2px 4px;
+  margin: 0 0 4px;
   font-style: italic;
   font-weight: bold;
+  font-size: 14px;
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+    padding: 4px 8px;
+    margin: 0 8px 8px;
+  }
 }
 
 .detail-card__image {

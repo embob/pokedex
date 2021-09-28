@@ -71,7 +71,7 @@ function setTypeIcons(types, size) {
   return types.map((type, index) => (
     <img
       key={index}
-      className={`preview-card__icon preview-card__icon--${type}`}
+      className={`type-icon type-icon--${type}`}
       src={`images/icons/${type}.svg`}
       alt={type}
       title={type}

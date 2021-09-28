@@ -1,3 +1,5 @@
+@use "./src/styles/responsive" as *;
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -6,7 +8,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #000;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .modal-wrapper {
@@ -24,15 +26,17 @@
 .modal {
   z-index: 100;
   position: relative;
-  margin: 1.75rem auto;
-  max-width: 465px;
-  height: 80vh;
-}
-
-.modal__inner {
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: white;
+  max-width: 440px;
+  margin: 12px;
+  @include media-breakpoint-up(sm) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: 440px;
+  }
+  // height: 80vh;
 }
 
 .modal__close-button {

@@ -1,17 +1,34 @@
+@use "./src/styles/responsive" as *;
+
 .damage-relations {
   display: flex;
-  padding: 4px;
+  // padding: 2px;
+  padding: 2px 0;
+  @include media-breakpoint-up(sm) {
+    padding: 4px;
+  }
   > * {
-    flex: 1 0 0;
+    flex-grow: 1;
     text-align: center;
+    margin-right: 6px;
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 
 .damage-relation__label {
+  font-size: 14px;
   font-weight: bold;
   margin-bottom: 4px;
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+  }
 }
 
-.damage-relation__icons {
-  padding: 0 6px;
+.damage-relation__icons .type-icon {
+  @include media-breakpoint-only(xs) {
+    width: 24px;
+    height: auto;
+  }
 }

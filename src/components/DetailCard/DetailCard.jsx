@@ -47,7 +47,7 @@ export default function DetailCard() {
           <Img src={`images/${id}.png`} alt={name} width={200} height={200} />
         </div>
         <div className="detail-card__attributes">
-          {`${genus}. Height ${height}cm, Weight ${weight}kg.`}
+          {`${genus}. Ht: ${height}cm, Wt: ${weight}kg.`}
         </div>
       </div>
       <div className="detail-card__second">

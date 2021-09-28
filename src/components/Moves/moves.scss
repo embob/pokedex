@@ -1,13 +1,21 @@
+@use "./src/styles/responsive" as *;
+
 .move {
   display: flex;
   align-items: center;
-  padding: 12px 10px;
+  padding: 10px 8px;
   border-bottom: 2px solid black;
+  @include media-breakpoint-up(sm) {
+    padding: 12px 10px;
+  }
 }
 
 .move__icon {
-  margin-right: 24px;
+  margin-right: 10px;
   line-height: 0;
+  @include media-breakpoint-up(sm) {
+    margin-right: 24px;
+  }
 }
 
 .move__text {
@@ -15,6 +23,9 @@
 }
 
 .move__name {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  @include media-breakpoint-up(sm) {
+    font-size: 20px;
+  }
 }
