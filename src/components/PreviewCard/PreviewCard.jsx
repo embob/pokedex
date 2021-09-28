@@ -22,6 +22,7 @@ export default function PreviewCard({ id, name, types }) {
         onClick={handleClick}
       >
         <img
+          className="preview-card__image"
           loading="lazy"
           src={`images/${id}.png`}
           alt={name}

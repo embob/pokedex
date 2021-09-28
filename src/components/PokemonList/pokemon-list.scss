@@ -1,10 +1,32 @@
+@use "./src/styles/responsive" as *;
+
 .pokemon-list {
   display: flex;
   flex-wrap: wrap;
-  margin: -16px;
+  margin: -8px;
+  @include media-breakpoint-up(lg) {
+    margin: -12px;
+  }
+  @include media-breakpoint-up(xxl) {
+    margin: -16px;
+  }
 }
 
 .pokemon-list__item {
-  flex-basis: calc((100% / 6) - 32px);
-  padding: 16px;
+  padding: 8px;
+  flex: 0 0 calc((100% / 2) - 16px);
+  @include media-breakpoint-up(md) {
+    flex-basis: calc((100% / 3) - 16px);
+  }
+  @include media-breakpoint-up(lg) {
+    padding: 12px;
+    flex-basis: calc((100% / 4) - 24px);
+  }
+  @include media-breakpoint-up(xl) {
+    flex-basis: calc((100% / 4) - 24px);
+  }
+  @include media-breakpoint-up(xxl) {
+    padding: 16px;
+    flex-basis: calc((100% / 6) - 32px);
+  }
 }

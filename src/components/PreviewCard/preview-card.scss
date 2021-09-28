@@ -1,3 +1,4 @@
+@use "./src/styles/responsive" as *;
 
 .preview-card--gradient {
   background: linear-gradient(180deg, var(--color-1) 0%, var(--color-2, var(--color-1)) 100%);
@@ -15,6 +16,17 @@
 .preview-card:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.preview-card__image {
+  @include media-breakpoint-only(xs) {
+    width: 120px;
+    height: 120px;
+  }
+  @include media-breakpoint-only(sm) {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 

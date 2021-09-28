@@ -27,7 +27,6 @@ export default function Search() {
         onChange={(event) => {
           setSearchQuery(event.target.value);
         }}
-        style={{ backgroundImage: `url(${searchIcon})` }}
       />
 
       <select
@@ -47,9 +46,12 @@ export default function Search() {
       </select>
 
       {(searchQuery || filterValue) && (
-        <div className="search__clear" onClick={handleClick}>
-          Clear search
+        <div>
+          <div className="search__clear" onClick={handleClick}>
+            Clear search
+          </div>
         </div>
+
       )}
     </div>
   );
