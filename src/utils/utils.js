@@ -59,7 +59,7 @@ function generateRandomNumbers(amountToReturn, maxValue, minValue = 1) {
   return randomNumbers;
 }
 
-function setRandomMoves(moves, amount) {
+function setTwoRandomMoves(moves, amount) {
   if (!moves.length) return;
   const numbers = generateRandomNumbers(amount, moves.length);
   const setMoves = numbers.map((index => moves[index]));
@@ -99,5 +99,5 @@ export {
   setTypeIcons,
   formatName,
   formatId,
-  setRandomMoves
+  setTwoRandomMoves
 };
