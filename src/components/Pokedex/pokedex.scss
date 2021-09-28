@@ -3,6 +3,9 @@
 .pokedex {
   padding: 16px;
   @include media-breakpoint-up(md) {
+    padding: 24px;
+  }
+  @include media-breakpoint-up(xxl) {
     padding: 32px;
   }
 }
