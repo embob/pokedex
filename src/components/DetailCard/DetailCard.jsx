@@ -44,7 +44,7 @@ export default function DetailCard() {
           name={name}
         />
         <div className={`detail-card__image detail-card__image--${firstType}`}>
-          <Img src={`images/${id}.png`} alt={name} width={220} height={220} />
+          <Img src={`images/${id}.png`} alt={name} width={200} height={200} />
         </div>
         <div className="detail-card__attributes">
           {`${genus}. Height ${height}cm, Weight ${weight}kg.`}
