@@ -46,6 +46,16 @@ function Pokedex() {
   }, [pokemon]);
 
   useEffect(() => {
+    if (types) {
+      types.forEach((type) => {
+        const newImage = new Image();
+        newImage.src = `images/icons/${type}.svg`;
+        window[`images/icons/${type}.svg`] = newImage;
+      });
+    }
+  }, [types]);
+
+  useEffect(() => {
     if (!filterValue && !searchQuery) {
       setNoSearchResults(false);
       setFilteredList([]);
@@ -83,7 +93,7 @@ function Pokedex() {
         noSearchResults,
         setNoSearchResults,
         cardClicked,
-        setCardClicked
+        setCardClicked,
       }}
     >
       <div className="pokedex">
@@ -95,7 +105,7 @@ function Pokedex() {
         <PokemonList />
       </div>
 
-      <Modal isShowing={isShowing} hide={toggle} id={cardClicked}/>
+      <Modal isShowing={isShowing} hide={toggle} id={cardClicked} />
     </PokedexContext.Provider>
   );
 }
