@@ -1,0 +1,17 @@
+.damage-relations {
+  display: flex;
+  padding: 4px;
+  > * {
+    flex: 1 0 0;
+    text-align: center;
+  }
+}
+
+.damage-relation__label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.damage-relation__icons {
+  padding: 0 6px;
+}

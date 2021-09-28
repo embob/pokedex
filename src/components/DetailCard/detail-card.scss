@@ -1,7 +1,82 @@
 .detail-card {
-  border: 20px solid #F6D949;
+  border: 16px solid #f6d949;
+  // padding: 6px 16px;
 }
 
 .detail-card--gradient {
-  background: linear-gradient(180deg, var(--color-1) 0%, var(--color-2, var(--color-1)) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-1) 0%,
+    var(--color-2, var(--color-1)) 100%
+  );
+}
+
+.detail-card__first {
+  padding: 0 20px;
+  position: relative;
+}
+
+.detail-card__second {
+  padding: 0 12px;
+}
+
+.detail-card__image {
+  position: relative;
+  border: 6px solid #f6d949;
+  text-align: center;
+  padding: 36px 0 8px;
+  background-size: cover;
+  margin-bottom: 4px;
+}
+
+.detail-card__attributes {
+  padding: 2px 6px;
+  background: #f6d949;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+.detail-card__damage-relations {
+  padding: 10px;
+  display: flex;
+}
+
+.detail-card__damage-relation {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.detail-card__damage-relation-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.detail-card__description {
+  border: 2px solid #f6d949;
+  padding: 4px 8px;
+  margin: 0 8px 8px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.detail-card__image {
+  background-image: url("./images/grass.jpg");
+}
+
+.detail-card__image--water {
+  background-image: url("./images/water.jpg");
+}
+
+.detail-card__image--poison {
+  background-image: url("./images/poison.jpg");
+}
+
+.detail-card__image--fire {
+  background-image: url("./images/fire.jpg");
+}
+
+.detail-card__image--ghost {
+  background-image: url("./images/ghost.jpg");
 }

@@ -1,0 +1,20 @@
+.move {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  border-bottom: 2px solid black;
+}
+
+.move__icon {
+  margin-right: 24px;
+  line-height: 0;
+}
+
+.move__text {
+  line-height: 1.2;
+}
+
+.move__name {
+  font-size: 20px;
+  font-weight: bold;
+}
