@@ -8,6 +8,7 @@ const ModalContext = React.createContext();
 
 const Modal = ({ isShowing, hide, id }) => {
   const url = id && `/.netlify/functions/pokemon/${id}`;
+  console.log(url);
   const { data, status, setStatus } = useFetch(url);
 
   return (
