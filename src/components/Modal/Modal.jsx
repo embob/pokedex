@@ -8,11 +8,10 @@ const ModalContext = React.createContext();
 
 const Modal = ({ isShowing, hide, id }) => {
   const url = id && `/.netlify/functions/pokemon/${id}`;
-
-  const { data, status } = useFetch(url);
+  const { data, status, setStatus } = useFetch(url);
 
   return (
-    <ModalContext.Provider value={{ data, status }}>
+    <ModalContext.Provider value={{ data, status, setStatus }}>
       {isShowing
         ? ReactDom.createPortal(
             <>

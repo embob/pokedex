@@ -1,0 +1,177 @@
+.skeleton-card {
+  width: 100%;
+  height: 620px;
+  cursor: progress;
+  border-radius: 20px;
+  background: linear-gradient(0.25turn, transparent, #fff, transparent),
+    // animation
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // title
+    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    // type
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // image
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // attributes
+    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // move1text
+    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // move1text
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // weaknesstitle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // weaknesstitle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    // move1circle
+    linear-gradient(#d6d6d6, #d6d6d6),
+    // description
+    linear-gradient(#fff, #fff),
+    // image
+    linear-gradient(#d6d6d6, #d6d6d6); // card
+  background-repeat: no-repeat;
+  background-size: 315px 100%,
+    // animation
+    210px 36px,
+    // title
+    38px 38px,
+    // type
+    calc(100% - 72px) 247px,
+    // image
+    calc(100% - 72px) 24px,
+    // attributes
+    38px 38px,
+    // move1circle
+    calc(100% - 136px) 30px,
+    // move1text
+    38px 38px,
+    // move2circle
+    calc(100% - 136px) 30px,
+    // move2text
+    110px 20px,
+    // weaknesstitle
+    26px 26px,
+    // move1circle
+    26px 26px,
+    // move1circle
+    26px 26px,
+    // move1circle
+    110px 20px,
+    // weaknesstitle
+    26px 26px,
+    // move1circle
+    26px 26px,
+    // move1circle
+    26px 26px,
+    // move1circle
+    26px 26px,
+    // move1circle
+    calc(100% - 72px) 55px,
+    // description
+    calc(100% - 32px) calc(100% - 32px),
+    // card
+    100% 100%; // card border
+  background-position: -315px 0,
+    // animation
+    36px 24px,
+    // title
+    370px 24px,
+    // type
+    36px 66px,
+    // image
+    36px 318px,
+    // attributes
+    36px 366px,
+    //move1circle
+    100px 370px,
+    // move1text
+    36px 426px,
+    //move2circle
+    100px 430px,
+    // move2text
+    78px 486px,
+    // weaknesstitle
+    89px 510px,
+    // move1circle
+    119px 510px,
+    // move1circle
+    149px 510px,
+    // move1circle
+    248px 486px,
+    // weaknesstitle
+    245px 510px,
+    // move1circle
+    275px 510px,
+    // move1circle
+    305px 510px,
+    // move1circle
+    335px 510px,
+    // move1circle
+    36px 540px,
+    // description
+    16px 16px,
+    // card
+    0 0; // card border
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position: 315px 0,
+      // animation
+      36px 24px,
+      // title
+      370px 24px,
+      // type
+      36px 66px,
+      // image
+      36px 318px,
+      // attributes
+      36px 366px,
+      //move1circle
+      100px 370px,
+      // move1text
+      36px 426px,
+      //move2circle
+      100px 430px,
+      // move2text
+      78px 486px,
+      // weaknesstitle
+      89px 510px,
+      // move1circle
+      119px 510px,
+      // move1circle
+      149px 510px,
+      // move1circle
+      248px 486px,
+      // weaknesstitle
+      245px 510px,
+      // move1circle
+      275px 510px,
+      // move1circle
+      305px 510px,
+      // move1circle
+      335px 510px,
+      // move1circle
+      36px 540px,
+      // description
+      16px 16px,
+      // card
+      0 0; // card border
+  }
+}

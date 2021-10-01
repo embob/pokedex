@@ -7,12 +7,13 @@ import Img from "../Img/Img";
 import Moves from "../Moves/Moves";
 import DetailCardHeader from "../DetailCardHeader/DetailCardHeader";
 import DamageRelations from "../DamageRelations/DamageRelations";
+import SkeletonCard from "../SkeletonCard/SkeletonCard";
 
 export default function DetailCard() {
   const { data, status } = useContext(ModalContext);
 
   if (status === "error") return <Error />;
-  if (status === "fetching") return <div>skeleton card</div>;
+  if (status === "fetching") return <SkeletonCard />;
 
   const {
     damageRelations = {},
