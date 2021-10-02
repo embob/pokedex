@@ -24,7 +24,7 @@ export default function useFetch(url) {
 
   useEffect(() => {
     let cancelRequest = false;
-
+    if (!url) return;
     const fetchData = async () => {
       dispatch({ type: "FETCHING" });
       try {
