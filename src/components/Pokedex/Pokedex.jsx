@@ -94,6 +94,7 @@ function Pokedex() {
         setNoSearchResults,
         cardClicked,
         setCardClicked,
+        isShowing,
       }}
     >
       <div className="pokedex">
@@ -105,7 +106,7 @@ function Pokedex() {
         <PokemonList />
       </div>
 
-      <Modal isShowing={isShowing} hide={toggle} id={cardClicked} />
+      <Modal />
     </PokedexContext.Provider>
   );
 }

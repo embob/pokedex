@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext} from "react";
 import ReactDom from "react-dom";
 import useFetch from "../../hooks/useFetch";
 import DetailCard from "../DetailCard/DetailCard";
 import "./modal.scss";
+import { PokedexContext } from "../Pokedex/Pokedex";
 
-// const ModalContext = React.createContext();
+const ModalContext = React.createContext();
 
-const Modal = ({ isShowing, hide, id }) => {
-
+const Modal = () => {
+  const { isShowing, toggle: hide, cardClicked: id } = useContext(PokedexContext);
   const url = id && `/.netlify/functions/pokemon/${id}`;
-  const { data, status} = useFetch(url);
+  const { data, status } = useFetch(url);
   return (
+    <ModalContext.Provider
+      value={{ data, status }} >
     <>
       {isShowing
         ? ReactDom.createPortal(
@@ -26,7 +29,7 @@ const Modal = ({ isShowing, hide, id }) => {
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <DetailCard data={data} status={status} />
+                  <DetailCard />
                 </div>
               </div>
             </>,
@@ -34,7 +37,8 @@ const Modal = ({ isShowing, hide, id }) => {
           )
         : null}
     </>
+    </ModalContext.Provider>
   );
 };
 
-export { Modal };
+export { Modal, ModalContext };
