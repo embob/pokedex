@@ -7,11 +7,9 @@ import "./modal.scss";
 // const ModalContext = React.createContext();
 
 const Modal = ({ isShowing, hide, id }) => {
-  console.log('id', id);
-  const url = id && `/.netlify/functions/pokemon/${id}`;
-  console.log('url', url);
-  const { data, status} = useFetch(url);
 
+  const url = id && `/.netlify/functions/pokemon/${id}`;
+  const { data, status} = useFetch(url);
   return (
     <>
       {isShowing
