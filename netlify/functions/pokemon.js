@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
       projection: {
         id: 1, name: 1, types: 1, _id: 0,
       },
-    }).toArray();
+    }).sort({"id":1}).toArray();
   };
 
   const getPokemon = async (id) => {
