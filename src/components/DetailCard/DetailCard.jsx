@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import Error from "../Error/Error";
+import ErrorCard from "../ErrorCard/ErrorCard";
 import "./detail-card.scss";
 import { setBackground, setTwoRandomMoves } from "../../utils/utils";
 import Img from "../Img/Img";
@@ -12,8 +12,8 @@ import { ModalContext } from "../Modal/Modal";
 export default function DetailCard() {
   const { data, status } = useContext(ModalContext);
 
-  if (status === "error") return <Error />;
-  if (status === "fetching") return <SkeletonCard />;
+  if (status === "error") return <SkeletonCard error={true} />;
+  if (status === "fetching") return <SkeletonCard loading={true} />;
 
   const {
     damageRelations = {},

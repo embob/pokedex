@@ -1,176 +1,201 @@
+@use "./src/styles/responsive" as *;
+
+$rectangle: linear-gradient(#d6d6d6, #d6d6d6);
+$circle: radial-gradient(circle, #d6d6d6 70%, transparent 0);
+
 .skeleton-card {
   width: 100%;
-  height: 620px;
-  cursor: progress;
+  height: auto;
+  padding-top: 153.5%;
+  @include media-breakpoint-up(sm) {
+    padding-top: 147%;
+  }
   border-radius: 20px;
   background: linear-gradient(0.25turn, transparent, #fff, transparent),
     // animation
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // title
-    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    $circle,
     // type
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // image
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // attributes
-    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // move1text
-    radial-gradient(circle 19px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // move1text
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // weaknesstitle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // weaknesstitle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    radial-gradient(circle 13px, #d6d6d6 99%, transparent 0),
+    $circle,
     // move1circle
-    linear-gradient(#d6d6d6, #d6d6d6),
+    $rectangle,
     // description
-    linear-gradient(#fff, #fff),
+    $rectangle,
     // image
-    linear-gradient(#d6d6d6, #d6d6d6); // card
+    $rectangle; // card
   background-repeat: no-repeat;
   background-size: 315px 100%,
     // animation
-    210px 36px,
+    50% 5.79%,
     // title
-    38px 38px,
+    // 38px 38px,
+    9.05% 6.11%,
     // type
-    calc(100% - 72px) 247px,
+    82.86% 39.7%,
     // image
-    calc(100% - 72px) 24px,
+    82.86% 3.86%,
     // attributes
-    38px 38px,
+    9.05% 6.11%,
     // move1circle
-    calc(100% - 136px) 30px,
+    67.62% 6.82%,
     // move1text
-    38px 38px,
+    9.05% 6.11%,
     // move2circle
-    calc(100% - 136px) 30px,
+    67.62% 6.82%,
     // move2text
-    110px 20px,
+    26.19% 3.22%,
     // weaknesstitle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    110px 20px,
+    26.19% 3.22%,
     // weaknesstitle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    26px 26px,
+    6.19% 4.18%,
     // move1circle
-    calc(100% - 72px) 55px,
+    82.86% 8.84%,
     // description
-    calc(100% - 32px) calc(100% - 32px),
+    92.38% 94.86%,
     // card
     100% 100%; // card border
   background-position: -315px 0,
     // animation
-    36px 24px,
+    17% 4.2%,
+    // 8.57% 3.859%,
     // title
-    370px 24px,
+    90% 4.2%,
     // type
-    36px 66px,
+    49% 17.8%,
     // image
-    36px 318px,
+    49% 53.5%,
     // attributes
-    36px 366px,
+    10% 63.2%,
     //move1circle
-    100px 370px,
+    70% 63%,
     // move1text
-    36px 426px,
+    10% 73.2%,
     //move2circle
-    100px 430px,
+    70% 73.5%,
     // move2text
-    78px 486px,
+    22% 80.2%,
     // weaknesstitle
-    89px 510px,
+    21% 85%,
     // move1circle
-    119px 510px,
+    28.2% 85%,
     // move1circle
-    149px 510px,
+    35.5% 85%,
     // move1circle
-    248px 486px,
+    78% 80.2%,
     // weaknesstitle
-    245px 510px,
+    61% 85%,
     // move1circle
-    275px 510px,
+    68.5% 85%,
     // move1circle
-    305px 510px,
+    75.5% 85%,
     // move1circle
-    335px 510px,
+    82.8% 85%,
     // move1circle
-    36px 540px,
+    49% 95%,
     // description
-    16px 16px,
+    50% 50%,
     // card
     0 0; // card border
+}
+
+.skeleton-card--loading {
   animation: loading 1.5s infinite;
+  cursor: progress;
+}
+
+.skeleton-card__error {
+  font-weight: bold;
+  font-size: 38px;
+  position: absolute;
+  top: 23%;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+  text-align: center;
 }
 
 @keyframes loading {
   to {
     background-position: 315px 0,
       // animation
-      36px 24px,
+      17% 4.2%,
       // title
-      370px 24px,
+      90% 4.2%,
       // type
-      36px 66px,
+      49% 17.8%,
       // image
-      36px 318px,
+      49% 53.5%,
       // attributes
-      36px 366px,
+      10% 63.2%,
       //move1circle
-      100px 370px,
+      70% 63%,
       // move1text
-      36px 426px,
+      10% 73.2%,
       //move2circle
-      100px 430px,
+      70% 73.5%,
       // move2text
-      78px 486px,
+      22% 80.2%,
       // weaknesstitle
-      89px 510px,
+      21% 85%,
       // move1circle
-      119px 510px,
+      28.2% 85%,
       // move1circle
-      149px 510px,
+      35.5% 85%,
       // move1circle
-      248px 486px,
+      78% 80.2%,
       // weaknesstitle
-      245px 510px,
+      61% 85%,
       // move1circle
-      275px 510px,
+      68.5% 85%,
       // move1circle
-      305px 510px,
+      75.5% 85%,
       // move1circle
-      335px 510px,
+      82.8% 85%,
       // move1circle
-      36px 540px,
+      49% 95%,
       // description
-      16px 16px,
+      50% 50%,
       // card
       0 0; // card border
   }

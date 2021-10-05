@@ -6,11 +6,14 @@
 
 .preview-card {
   border-radius: 4px;
-  padding: 16px 8px 8px;
+  padding: 8px 4px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform .5s ease;
+  @include media-breakpoint-up(sm) {
+    padding: 16px 8px 8px;
+  }
 }
 
 .preview-card:hover {
@@ -19,7 +22,7 @@
 }
 
 .preview-card__image {
-  @include media-breakpoint-only(xs) {
+  @include media-breakpoint-down(sm) {
     width: 120px;
     height: 120px;
   }
@@ -30,10 +33,14 @@
 }
 
 .preview-card__name {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
   text-align: center;
   margin-bottom: 8px;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+  }
 
   @include media-breakpoint-up(md) {
     font-size: 22px;

@@ -14,14 +14,6 @@
   }
 }
 
-// .search > * {
-//   margin-bottom: 16px;
-//   margin: 0 0 16px 0;
-//   @include media-breakpoint-up(md) {
-//     margin: 0 16px 0 0;
-//   }
-// }
-
 input, select {
   font-size: 16px;
   border: 2px solid #bfbfbf;
@@ -54,27 +46,36 @@ input, select {
   -moz-appearance: none;
   appearance: none;
   background: transparent calc(100% - 12px) 55% / 14px auto no-repeat url(down-arrow.svg);
+  margin: 0 0 8px 0;
+  @include media-breakpoint-up(sm) {
+    margin: 0 16px 0 0;
+  }
+}
+
+.search__clear-wrapper {
+  @include media-breakpoint-down(sm) {
+  display: flex;
+  justify-content: flex-end;
+  }
 }
 
 .search__clear {
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   color: $pokemon-red;
   border-bottom: 2px solid;
 
   &::before {
     content: "\2297";
     color: $pokemon-red;
-    font-size: 24px;
-    margin-right: 4px;
-    // color:
+    font-size: 20px;
+    margin-right: 2px;
   }
 }
 
 .search__clear-cross {
   font-size: 26px;
   color: $pokemon-red;
-  // line-height: 0;
 }

@@ -1,11 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PokedexContext } from "../Pokedex/Pokedex";
 import { capitalise } from "../../utils/utils";
 import "./search.scss";
 
 export default function Search() {
-  const { searchQuery, setSearchQuery, filterValue, setFilterValue, types, setFilteredList, setNoSearchResults } =
-    useContext(PokedexContext);
+  const {
+    types,
+    setFilteredList,
+    setNoSearchResults,
+    pokemon
+  } = useContext(PokedexContext);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterValue, setFilterValue] = useState("");
+
+  useEffect(() => {
+    if (!filterValue && !searchQuery) {
+      setNoSearchResults(false);
+      setFilteredList([]);
+      return;
+    }
+    const typesFiltered = !filterValue
+      ? pokemon
+      : pokemon.filter(({ types }) => types.includes(filterValue));
+    const namesFiltered = !searchQuery
+      ? typesFiltered
+      : typesFiltered.filter(({ name }) => {
+          return name.includes(searchQuery.toLowerCase());
+        });
+    if (namesFiltered.length === 0) setNoSearchResults(true);
+    setFilteredList(namesFiltered);
+  }, [pokemon, filterValue, searchQuery, setFilteredList, setNoSearchResults]);
 
   function handleClick(event) {
     event.preventDefault();
@@ -14,6 +39,7 @@ export default function Search() {
     setFilteredList([]);
     setNoSearchResults(false);
   }
+
   return (
     <div className="search">
       <input
@@ -45,12 +71,11 @@ export default function Search() {
       </select>
 
       {(searchQuery || filterValue) && (
-        <div>
+        <div className="search__clear-wrapper">
           <div className="search__clear" onClick={handleClick}>
             Clear search
           </div>
         </div>
-
       )}
     </div>
   );

@@ -16,8 +16,6 @@ function Pokedex() {
   const [pokemon, setPokemon] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [types, setTypes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filterValue, setFilterValue] = useState("");
   const [noSearchResults, setNoSearchResults] = useState(false);
   const [cardClicked, setCardClicked] = useState(null);
 
@@ -55,24 +53,6 @@ function Pokedex() {
     }
   }, [types]);
 
-  useEffect(() => {
-    if (!filterValue && !searchQuery) {
-      setNoSearchResults(false);
-      setFilteredList([]);
-      return;
-    }
-    const typesFiltered = !filterValue
-      ? pokemon
-      : pokemon.filter(({ types }) => types.includes(filterValue));
-    const namesFiltered = !searchQuery
-      ? typesFiltered
-      : typesFiltered.filter(({ name }) => {
-          return name.includes(searchQuery.toLowerCase());
-        });
-    if (namesFiltered.length === 0) setNoSearchResults(true);
-    setFilteredList(namesFiltered);
-  }, [pokemon, filterValue, searchQuery]);
-
   const { isShowing, toggle } = useModal();
 
   if (isLoading) return <Loading />;
@@ -81,10 +61,6 @@ function Pokedex() {
   return (
     <PokedexContext.Provider
       value={{
-        searchQuery,
-        setSearchQuery,
-        filterValue,
-        setFilterValue,
         types,
         filteredList,
         setFilteredList,

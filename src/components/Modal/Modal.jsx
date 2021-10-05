@@ -19,7 +19,7 @@ const Modal = () => {
         ? ReactDom.createPortal(
             <>
               <div className="modal-overlay" />
-              <div className="modal-wrapper">
+              <div className="modal-wrapper" >
                 <div className="modal">
                   <button
                     className="modal__close-button"

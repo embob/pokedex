@@ -4,7 +4,6 @@ import Img from "../Img/Img";
 import { formatName, setTypeIcons } from "../../utils/utils";
 import "./detail-card-header.scss";
 
-
 function EvolvesFromText({ name }) {
   const subtitleClasses = classNames({
     "detail-card-header__subtitle": true,
@@ -26,29 +25,28 @@ function EvolvesFromImage({ id, name }) {
 }
 
 export default function DetailCardHeader({ evolvesFrom, hp, types, name }) {
-
   const nameClasses = classNames({
     "detail-card-header__name": true,
     "detail-card-header__name--evolution": evolvesFrom,
   });
 
-  const { name: evolvesFromName, id: evolvesFromId } = {...evolvesFrom};
+  const { name: evolvesFromName, id: evolvesFromId } = { ...evolvesFrom };
 
-  const typeIcons = setTypeIcons(types, 36);
+  const typeIcons = setTypeIcons(types, 32);
 
   return (
     <div className="detail-card-header">
-      <div className="detail-card-header__first">
-        <EvolvesFromText name={evolvesFromName} />
-        {evolvesFromId && (
-          <EvolvesFromImage name={evolvesFromName} id={evolvesFromId} />
-        )}
-        <div className={nameClasses}>{formatName(name)}</div>
-      </div>
+      {evolvesFromId && (
+        <EvolvesFromImage name={evolvesFromName} id={evolvesFromId} />
+      )}
+      <EvolvesFromText name={evolvesFromName} />
 
-      <div className="detail-card-header__second">
-        <span className="detail-card-header__hp">{`${hp} HP`}</span>
-        <span className="detail-card-header__types">{typeIcons}</span>
+      <div className="detail-card-header__main-text">
+        <div className={nameClasses}>{formatName(name)}</div>
+        <div className="detail-header__main-text-second">
+          <span className="detail-card-header__hp">{`${hp} HP`}</span>
+          <span className="detail-card-header__types">{typeIcons}</span>
+        </div>
       </div>
     </div>
   );

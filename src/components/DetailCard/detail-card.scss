@@ -19,7 +19,10 @@
 
 .detail-card__first {
   position: relative;
-  padding: 0 14px;
+  padding: 0 10px;
+  @include media-breakpoint-up(xs) {
+    padding: 0 14px;
+  }
   @include media-breakpoint-up(sm) {
     padding: 2px 20px 0;
   }
@@ -36,16 +39,19 @@
   position: relative;
   border: 4px solid #f6d949;
   text-align: center;
-  padding: 18px 0 4px;
+  padding: 12px 0 0;
   background-size: cover;
   margin-bottom: 4px;
+  @include media-breakpoint-up(xs) {
+    padding: 18px 0 4px;
+  }
   @include media-breakpoint-up(sm) {
     border: 6px solid #f6d949;
     padding: 24px 0 8px;
   }
   img {
-    @include media-breakpoint-only(xs) {
-      width: 160px;
+    @include media-breakpoint-down(sm) {
+      width: 140px;
       height: auto;
     }
   }
@@ -57,7 +63,6 @@
   text-align: center;
   font-weight: bold;
   font-style: italic;
-  margin-bottom: 4px;
   font-size: 14px;
   @include media-breakpoint-up(sm) {
     padding: 2px 6px;
@@ -86,7 +91,10 @@
   margin: 0 0 4px;
   font-style: italic;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
+  @include media-breakpoint-up(xs) {
+    font-size: 14px;
+  }
   @include media-breakpoint-up(sm) {
     font-size: 16px;
     padding: 4px 8px;
