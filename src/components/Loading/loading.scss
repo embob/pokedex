@@ -1,3 +1,4 @@
+@use "./src/styles/responsive" as *;
 
 .loading {
   display: flex;
@@ -12,18 +13,23 @@
 }
 
 .ball {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   display: block;
   border-radius: 50%;
   position: relative;
   margin-right: 15px;
-}
-
-.loading__text {
-  font-size: 96px;
-  font-weight: bold;
-  margin-right: 24px;
+  @include media-breakpoint-up(sm) {
+    width: 100px;
+    height: 100px;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .loading__animation {
@@ -32,17 +38,14 @@
 
 .ball-1 {
   animation: anim 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  // animation-delay: 0s;
 }
 
 .ball-2 {
   animation: anim1 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  // animation-delay: 1.5s;
 }
 
 .ball-3 {
   animation: anim2 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  // animation-delay: 3.5s;
 }
 
 @keyframes anim {

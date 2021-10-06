@@ -1,9 +1,6 @@
 @use "./src/styles/responsive" as *;
 
 .detail-card-header {
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: flex-end;
   padding-top: 2px;
 }
 
@@ -87,8 +84,12 @@
   @include media-breakpoint-up(xs) {
     margin-left: 48px;
   }
+  @include media-breakpoint-down(sm) {
+    font-size: 20px;
+  }
   @include media-breakpoint-up(sm) {
     margin-left: 70px;
+    font-size: 28px;
   }
 }
 
@@ -97,7 +98,6 @@
   text-transform: uppercase;
   font-weight: bold;
   color: red;
-  // margin-right: 4px;
   @include media-breakpoint-up(xs) {
     font-size: 18px;
   }

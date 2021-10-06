@@ -1,11 +1,18 @@
 import React from "react";
 import { setTypeIcons } from "../../utils/utils";
 import "./damage-relations.scss";
+import classNames from "classnames";
 
 export default function DamageRelations({ damageRelations }) {
+
+
   const { weakTo = [], resistantTo = [], immuneTo = [] } = damageRelations;
+  const classes = classNames({
+    "damage-relations": true,
+    "damage-relations--with-immunity": immuneTo.length > 0,
+  });
   return (
-    <div className="damage-relations">
+    <div className={classes}>
       <div>
         <div className="damage-relation__label">weakness</div>
         <div className="damage-relation__icons">{setTypeIcons(weakTo, 26)}</div>

@@ -1,3 +1,5 @@
+@use "./src/styles/responsive" as *;
+
 .error {
   display: flex;
   justify-content: center;
@@ -7,8 +9,16 @@
 
 .error__inner-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  font-size: 48px;
+  font-size: 32px;
   font-weight: bold;
-  flex-basis: 600px;
+  width: 100%;
+  padding: 32px;
+  text-align: center;
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    flex-basis: 600px;
+    font-size: 48px;
+  }
 }

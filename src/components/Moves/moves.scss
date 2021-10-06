@@ -6,7 +6,7 @@
   padding: 6px 0;
   border-bottom: 2px solid black;
   @include media-breakpoint-up(xs) {
-    padding: 10px 8px;
+    padding: 8px 4px;
   }
   @include media-breakpoint-up(sm) {
     padding: 12px 8px;
@@ -29,14 +29,21 @@
 
 .move__text {
   line-height: 1.2;
-  @include media-breakpoint-down(sm) {
+  font-size: 12px;
+  @include media-breakpoint-up(xs) {
     font-size: 14px;
+  }
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
   }
 }
 
 .move__name {
-  font-size: 16px;
   font-weight: bold;
+  font-size: 14px;
+  @include media-breakpoint-up(xs) {
+    font-size: 16px;
+  }
   @include media-breakpoint-up(sm) {
     font-size: 20px;
   }

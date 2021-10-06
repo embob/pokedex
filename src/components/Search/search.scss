@@ -64,18 +64,16 @@ input, select {
   display: inline-flex;
   align-items: center;
   font-size: 16px;
-  color: $pokemon-red;
+  color: $pokemon-blue;
   border-bottom: 2px solid;
 
+  @include media-breakpoint-up(sm) {
+    font-size: 18px;
+  }
   &::before {
     content: "\2297";
-    color: $pokemon-red;
+    color: $pokemon-blue;
     font-size: 20px;
     margin-right: 2px;
   }
-}
-
-.search__clear-cross {
-  font-size: 26px;
-  color: $pokemon-red;
 }
