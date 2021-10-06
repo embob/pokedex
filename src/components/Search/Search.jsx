@@ -4,12 +4,8 @@ import { capitalise } from "../../utils/utils";
 import "./search.scss";
 
 export default function Search() {
-  const {
-    types,
-    setFilteredList,
-    setNoSearchResults,
-    pokemon
-  } = useContext(PokedexContext);
+  const { types, setFilteredList, setNoSearchResults, pokemon } =
+    useContext(PokedexContext);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filterValue, setFilterValue] = useState("");
