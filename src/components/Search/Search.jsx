@@ -54,29 +54,30 @@ export default function Search() {
         }}
       />
 
-      <select
-        className="search__select"
-        onChange={(event) => {
-          setFilterValue(event.target.value);
-        }}
-        aria-label="Filter Pokemon by Type"
-        value={filterValue}
-      >
-        <option value="">Filter By Type</option>
-        {types.map((type) => (
-          <option key={type} value={type}>
-            {capitalise(type)}
-          </option>
-        ))}
-      </select>
-
-      {(searchQuery || filterValue) && (
-        <div className="search__clear-wrapper">
-          <div className="search__clear" onClick={handleClick}>
-            Clear search
+      <div className="search__second">
+        <select
+          className="search__select"
+          onChange={(event) => {
+            setFilterValue(event.target.value);
+          }}
+          aria-label="Filter Pokemon by Type"
+          value={filterValue}
+        >
+          <option value="">Filter By Type</option>
+          {types.map((type) => (
+            <option key={type} value={type}>
+              {capitalise(type)}
+            </option>
+          ))}
+        </select>
+        {(searchQuery || filterValue) && (
+          <div className="search__clear-wrapper">
+            <div className="search__clear" onClick={handleClick}>
+              Clear search
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
