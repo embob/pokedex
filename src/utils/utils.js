@@ -30,7 +30,7 @@ function capitalise(string) {
 function getTypes(pokemon) {
   const typesSet = new Set();
   pokemon.map(({ types }) => types.map((type) => typesSet.add(type)));
-  return Array.from(typesSet);
+  return Array.from(typesSet).sort();
 }
 
 function setBackground(types) {
