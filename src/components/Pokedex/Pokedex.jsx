@@ -7,6 +7,7 @@ import { Modal } from "../Modal/Modal";
 import useModal from "../useModal";
 import "./pokedex.scss";
 import Search from "../Search/Search";
+import backgroundImages from "../DetailCard/images";
 
 const PokedexContext = React.createContext();
 
@@ -52,6 +53,14 @@ function Pokedex() {
       });
     }
   }, [types]);
+
+  useEffect(() => {
+    backgroundImages.forEach((img) => {
+      const newBackgroundImage = new Image();
+      newBackgroundImage.src = img;
+      window[img] = newBackgroundImage;
+    });
+  }, [])
 
   const { isShowing, toggle } = useModal();
 

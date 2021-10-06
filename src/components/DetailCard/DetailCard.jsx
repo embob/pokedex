@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./detail-card.scss";
 import { setBackground, setTwoRandomMoves } from "../../utils/utils";
 import Img from "../Img/Img";
